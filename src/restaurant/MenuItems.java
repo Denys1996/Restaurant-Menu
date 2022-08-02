@@ -1,5 +1,7 @@
 package restaurant;
 
+import java.awt.*;
+
 public class MenuItems {
     //Class Variable
     private String name;
@@ -9,14 +11,15 @@ public class MenuItems {
     private Boolean isNew;
 
     //Constructors
-    public MenuItems(String name, String description, Double price) {
+    public MenuItems(String name, String description, Double price, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
 
-        this.category = "Not Categorized";
+        this.category = category;
         this.isNew = false;
     }
+
     public MenuItems(String name, String description, Double price, String category, Boolean isNew) {
         this.name = name;
         this.description = description;
@@ -24,8 +27,9 @@ public class MenuItems {
         this.category = category;
         this.isNew = isNew;
     }
+
     //Methods
-      //Getter & Setters
+    //Getter & Setters
     public String getName() {
         return name;
     }
@@ -58,11 +62,42 @@ public class MenuItems {
         this.category = category;
     }
 
-    public Boolean getNew() {
+    //2. A way to tell if a menu item is new.
+    public Boolean isNew() {
         return isNew;
     }
 
     public void setNew(Boolean aNew) {
         isNew = aNew;
+    }
+
+    //4. A way to print out both a single menu item as well as the entire menu.
+    @Override
+    public String toString() {
+        String name = "Name: " + this.name;
+        String description = "Description: " + this.description;
+        String price = "Price: " + this.price;
+        String category = "Category: " + this.category;
+        String isNew = "New? " + this.isNew;
+        return name + "\n" + description + "\n" + price + "\n" + category + "\n" + isNew;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return false;
+        }
+        if (!(obj instanceof MenuItems)) {
+            return false;
+        }
+        MenuItems menuItem = (MenuItems) obj;
+        if (menuItem.name.equals(this.name)
+                && menuItem.description.equals(this.description)
+                && menuItem.price.equals(this.price)
+                && menuItem.category.equals(this.category)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

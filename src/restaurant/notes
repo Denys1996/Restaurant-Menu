@@ -1,0 +1,9 @@
+MENUITEM CLASS
+-item name (type: String)
+-item description (type: String)
+
+MENU METHODS
+-add/remove menu items (consider: ArrayList methods)
+-tell if menu item is new (consider: new status getter)
+-tell when menu was last upadated
+-print out single item
